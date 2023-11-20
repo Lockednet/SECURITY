@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Limpando todas as regras e cadeias em cada tabela do iptables
+iptables -F
+iptables -X
+iptables -t mangle -F
+iptables -t mangle -X
+iptables -t nat -F
+iptables -t nat -X
+iptables -t filter -F
+iptables -t filter -X
+
+# Mostrando as tabelas e suas regras atuais
+echo "Tabela filter:"
+iptables -t filter -L -n -v
+
+echo "Tabela nat:"
+iptables -t nat -L -n -v
+
+echo "Tabela mangle:"
+iptables -t mangle -L -n -v
