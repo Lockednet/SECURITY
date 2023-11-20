@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Atualiza o sistema
+apt-get update
+apt-get upgrade -y
+
+# Lista de pacotes a serem instalados
+packages=("grep" "gawk" "mlocate" "lolcat" "at" "nano" "figlet" "cowsay" "screen" "ufw" "unzip" "zip" "curl" "wget" "htop" "net-tools" "openssh-server" "ntp")
+
+# Instalação dos pacotes
+for package in "${packages[@]}"; do
+    apt-get install -y "$package" || echo "Falha ao instalar $package. Continuando com os próximos pacotes."
+done
